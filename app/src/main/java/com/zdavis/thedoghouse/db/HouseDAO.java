@@ -22,7 +22,5 @@ public interface HouseDAO {
     List<House> getHouses();
 
     @Query("SELECT * FROM " + AppDatabase.HOUSE_TABLE + " WHERE houseId = :logId")
-    House getHousesById(int logId);
-
-
+    List<House> getHouseById(int logId);
 }

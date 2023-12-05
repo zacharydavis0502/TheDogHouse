@@ -22,7 +22,13 @@ public interface UserDAO {
     List<User> getUsers();
 
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE userId = :logId")
-    User getUsersById(int logId);
+    List<User> getUsersById(int logId);
+
+    @Query("SELECT * FROM (SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE username = :username) WHERE password = :password")
+    List<User> authenticateUser(String username, String password);
+
+    @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE username = :username")
+    List<User> getByUsername(String username);
 
 
 }

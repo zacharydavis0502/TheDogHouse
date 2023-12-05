@@ -7,12 +7,92 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/login_appName_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16sp"
+        android:fontFamily="serif"
+        android:text="@string/appName"
+        android:textAllCaps="false"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/login_username_edittext"
+        android:layout_width="250sp"
+        android:layout_height="75sp"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:hint="Username"
+        android:inputType="text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_appName_textview"/>
+
+    <EditText
+        android:id="@+id/login_password_edittext"
+        android:layout_width="250sp"
+        android:layout_height="75sp"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_username_edittext"/>
+
+    <Button
+        android:id="@+id/login_login_button"
+        android:layout_width="250sp"
+        android:layout_height="75sp"
+        android:layout_marginTop="16sp"
+        android:backgroundTint="@color/buttonColor"
+        android:text="@string/login_button_label"
+        android:textColor="@color/textColor"
+        android:textColorHighlight="#F7F5F5"
+        android:textColorLink="#F7F5F5"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_password_edittext" />
+
+    <TextView
+        android:id="@+id/login_status_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16sp"
+        android:fontFamily="serif"
+        android:text="Test"
+        android:textColor="@color/white"
+        android:textColorHighlight="@color/white"
+        android:textColorLink="@color/white"
+        android:textAllCaps="false"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_login_button" />
+
+    <Button
+        android:id="@+id/login_create_account_button"
+        android:layout_width="300sp"
+        android:layout_height="75sp"
+        android:layout_marginBottom="30sp"
+        android:backgroundTint="@color/buttonColor"
+        android:text="@string/create_account_button_label"
+        android:textColor="@color/textColor"
+        android:textColorHighlight="#F7F5F5"
+        android:textColorLink="#F7F5F5"
+        android:textSize="32sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

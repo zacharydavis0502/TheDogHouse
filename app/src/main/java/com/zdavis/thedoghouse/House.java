@@ -13,8 +13,8 @@ public class House {
     @PrimaryKey(autoGenerate = true)
     private int houseId;
     private String name;
-    private ArrayList<User> users;
-    private ArrayList<Pet> pets;
+    private ArrayList<Integer> users;
+    private ArrayList<Integer> pets;
 
     public House(String name) {
         this.name = name;
@@ -38,19 +38,19 @@ public class House {
         this.name = name;
     }
 
-    public ArrayList<User> getUsers() {
+    public ArrayList<Integer> getUsers() {
         return users;
     }
 
-    public void setUsers(ArrayList<User> users) {
+    public void setUsers(ArrayList<Integer> users) {
         this.users = users;
     }
 
-    public ArrayList<Pet> getPets() {
+    public ArrayList<Integer> getPets() {
         return pets;
     }
 
-    public void setPets(ArrayList<Pet> pets) {
+    public void setPets(ArrayList<Integer> pets) {
         this.pets = pets;
     }
 }

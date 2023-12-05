@@ -22,7 +22,7 @@ public interface PetDAO {
     List<Pet> getPets();
 
     @Query("SELECT * FROM " + AppDatabase.PET_TABLE + " WHERE petId = :logId")
-    Pet getPetById(int logId);
+    List<Pet> getPetById(int logId);
 
 
 }
