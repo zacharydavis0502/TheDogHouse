@@ -35,6 +35,7 @@ public abstract class AppDatabase extends RoomDatabase {
                            DB_NAME)
                            .allowMainThreadQueries()
                            .createFromAsset("database/DOGHOUSE_DATABASE_pop.db")
+                           .fallbackToDestructiveMigration()
                            .build();
                 }
             }

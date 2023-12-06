@@ -5,6 +5,8 @@ import androidx.room.PrimaryKey;
 
 import com.zdavis.thedoghouse.db.AppDatabase;
 
+import java.util.ArrayList;
+
 @Entity(tableName = AppDatabase.USER_TABLE)
 public class User {
     @PrimaryKey(autoGenerate = true)
@@ -12,12 +14,15 @@ public class User {
     private String username;
     private String password;
 
+    private ArrayList<Integer> homes;
+
     private boolean isAdmin;
 
     public User(String username, String password, boolean isAdmin) {
         this.username = username;
         this.password = password;
         this.isAdmin = isAdmin;
+        homes = new ArrayList<>();
     }
 
     public int getUserId() {
@@ -50,5 +55,13 @@ public class User {
 
     public void setAdmin(boolean admin) {
         isAdmin = admin;
+    }
+
+    public ArrayList<Integer> getHomes() {
+        return homes;
+    }
+
+    public void setHomes(ArrayList<Integer> homes) {
+        this.homes = homes;
     }
 }

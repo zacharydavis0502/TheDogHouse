@@ -17,4 +17,5 @@
     <string name="addHome">Add Home</string>
     <string name="adminButton">Admin Menu</string>
     <string name="back">Back</string>
+    <string name="adminPage">Admin Page</string>
 </resources>
