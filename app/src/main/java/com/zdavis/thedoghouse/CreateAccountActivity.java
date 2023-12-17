@@ -5,6 +5,7 @@ import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,8 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     UserDAO mUserDAO;
 
+    String status = "";
+
     ActivityCreateAccountBinding mCreateAccountBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +44,9 @@ public class CreateAccountActivity extends AppCompatActivity {
         mCreateAccountStatusTextView = mCreateAccountBinding.createAccountStatusTextview;
         mCreateAccountButton = mCreateAccountBinding.createAccountButton;
 
-        mUserDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getUserDao();
+        mUserDAO = AppDatabase.getInstance(this).getUserDao();
 
+        mCreateAccountStatusTextView.setText(status);
         mCreateAccountButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -59,7 +60,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                     Intent intent = MainActivity.getIntent(getApplicationContext());
                     startActivity(intent);
                 } else {
-                    mCreateAccountStatusTextView.setText("Bad credentials!");
+                    status = "Failed to create account! Username already exists!";
+                    updateStatus();
                 }
             }
         });
@@ -76,7 +78,10 @@ public class CreateAccountActivity extends AppCompatActivity {
         return result;
 
     }
-
+    private void updateStatus() {
+        mCreateAccountStatusTextView.setTextColor(Color.RED);
+        mCreateAccountStatusTextView.setText(status);
+    }
 
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, CreateAccountActivity.class);

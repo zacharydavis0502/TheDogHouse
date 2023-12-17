@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PetActivity">
+
+    <TextView
+        android:id="@+id/pet_AppName_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16sp"
+        android:fontFamily="serif"
+        android:text="@string/appName"
+        android:hint="Pet Name"
+        android:textAllCaps="false"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pet_name_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16sp"
+        android:fontFamily="serif"
+        android:hint="Pet Name"
+        android:gravity="center"
+        android:textAllCaps="false"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pet_AppName_textview" />
+
+    <TextView
+        android:id="@+id/pet_type_and_color_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:hint="Pet Type and Color"
+        android:inputType="text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pet_name_textview"/>
+
+    <TextView
+        android:id="@+id/pet_birthdate_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:hint="Birthdate"
+        android:inputType="text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pet_type_and_color_textview"/>
+
+    <ScrollView
+        android:id="@+id/pet_notes_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="290sp"
+        app:layout_constraintTop_toBottomOf="@id/pet_birthdate_textview"
+        app:layout_constraintBottom_toTopOf="@id/pet_back_button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="139dp">
+
+        <LinearLayout
+            android:id="@+id/pet_notes_linearlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <EditText
+                android:id="@+id/pet_note_multilineText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="10sp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/pet_back_button"
+        android:layout_width="205sp"
+        android:layout_height="75sp"
+        android:layout_marginBottom="15sp"
+        android:backgroundTint="@color/buttonColor"
+        android:text="@string/back"
+        android:textColor="@color/textColor"
+        android:textColorHighlight="#F7F5F5"
+        android:textColorLink="#F7F5F5"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/pet_remove_button" />
+
+    <Button
+        android:id="@+id/pet_remove_button"
+        android:layout_width="wrap_content"
+        android:layout_height="75sp"
+        android:layout_marginBottom="15sp"
+        android:backgroundTint="@color/buttonRedColor"
+        android:text="@string/removePet"
+        android:textColor="@color/textColor"
+        android:textColorHighlight="#F7F5F5"
+        android:textColorLink="#F7F5F5"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/pet_back_button" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

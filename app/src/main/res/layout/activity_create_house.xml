@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminMenuActivity">
+    tools:context=".CreateHouseActivity">
 
     <TextView
-        android:id="@+id/admin_appName_textview"
+        android:id="@+id/create_house_appName_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16sp"
@@ -22,77 +22,57 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/admin_title_textview"
+        android:id="@+id/create_house_title_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16sp"
         android:fontFamily="serif"
-        android:text="@string/adminPage"
+        android:text="@string/createHome"
         android:textAllCaps="false"
         android:textSize="30sp"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/admin_appName_textview"/>
+        app:layout_constraintTop_toBottomOf="@id/create_house_appName_textview"/>
 
-    <TextView
-        android:id="@+id/admin_welcome_textview"
+    <EditText
+        android:id="@+id/create_house_name_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:hint="New House Name"
+        android:inputType="text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/create_house_title_textview"/>
+    <EditText
+        android:id="@+id/create_house_invited_users_edittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:hint="Invite Users (u1, u2, ...)"
+        android:inputType="text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/create_house_name_edittext"/>
+
+    <Button
+        android:id="@+id/create_house_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16sp"
-        android:gravity="center"
-        android:hint="Welcome ___!"
-        android:inputType="text"
-        android:textSize="20sp"
+        android:backgroundTint="@color/buttonColor"
+        android:text="@string/createHome"
+        android:textColor="@color/textColor"
+        android:textColorHighlight="#F7F5F5"
+        android:textColorLink="#F7F5F5"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/admin_title_textview"/>
-    <Button
-        android:id="@+id/admin_allusers_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30sp"
-        android:backgroundTint="@color/buttonColor"
-        android:gravity="center"
-        android:text="@string/adminAllUsers"
-        android:textColor="@color/textColor"
-        android:textColorHighlight="#F7F5F5"
-        android:textColorLink="#F7F5F5"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@id/admin_allhomes_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/admin_allhomes_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30sp"
-        android:backgroundTint="@color/buttonColor"
-        android:gravity="center"
-        android:text="@string/adminAllHomes"
-        android:textColor="@color/textColor"
-        android:textColorHighlight="#F7F5F5"
-        android:textColorLink="#F7F5F5"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@id/admin_back_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/admin_back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30sp"
-        android:backgroundTint="@color/buttonColor"
-        android:gravity="center"
-        android:text="@string/back"
-        android:textColor="@color/textColor"
-        android:textColorHighlight="#F7F5F5"
-        android:textColorLink="#F7F5F5"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/create_house_invited_users_edittext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

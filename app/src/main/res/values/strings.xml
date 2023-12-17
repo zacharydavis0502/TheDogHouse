@@ -17,5 +17,14 @@
     <string name="addHome">Add Home</string>
     <string name="adminButton">Admin Menu</string>
     <string name="back">Back</string>
+    <string name="deleteUser">Delete User</string>
     <string name="adminPage">Admin Page</string>
+    <string name="adminAllUsers">View All Users</string>
+    <string name="adminAllHomes">View All Homes</string>
+    <string name="badId">An invalid user id was given!</string>
+    <string name="noUserById">No such user exists with given user ID!</string>
+    <string name="newPet">New Pet</string>
+    <string name="addPet">Add Pet</string>
+    <string name="deleteHouse">Delete House</string>
+    <string name="removePet">Remove Pet</string>
 </resources>

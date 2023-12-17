@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey;
 
 import com.zdavis.thedoghouse.db.AppDatabase;
 
+import java.time.LocalDate;
 import java.util.Date;
-import java.util.HashMap;
 
 @Entity(tableName = AppDatabase.PET_TABLE)
 public class Pet {
@@ -15,15 +15,15 @@ public class Pet {
     private String name;
     private String type;
     private String color;
-    private Date birthdate;
-    private HashMap<Date, String> notes;
+    private LocalDate birthdate;
+    private String notes;
 
-    public Pet(String name, String type, String color, Date birthdate) {
+    public Pet(String name, String type, String color, LocalDate birthdate) {
         this.name = name;
         this.type = type;
         this.color = color;
         this.birthdate = birthdate;
-        this.notes = new HashMap<>();
+        this.notes = "";
     }
 
     public int getPetId() {
@@ -58,19 +58,19 @@ public class Pet {
         this.color = color;
     }
 
-    public Date getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
-    public HashMap<Date, String> getNotes() {
+    public String getNotes() {
         return notes;
     }
 
-    public void setNotes(HashMap<Date, String> notes) {
+    public void setNotes(String notes) {
         this.notes = notes;
     }
 }

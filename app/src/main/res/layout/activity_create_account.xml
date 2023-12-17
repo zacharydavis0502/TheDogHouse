@@ -49,8 +49,8 @@
 
     <Button
         android:id="@+id/create_account_button"
-        android:layout_width="250sp"
-        android:layout_height="75sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16sp"
         android:backgroundTint="@color/buttonColor"
         android:text="@string/create_account_button_label"
@@ -68,7 +68,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16sp"
         android:fontFamily="serif"
-        android:text="Test"
+        android:text=""
+        android:gravity="center"
         android:textColor="@color/white"
         android:textColorHighlight="@color/white"
         android:textColorLink="@color/white"

@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.room.TypeConverter;
 
 import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -57,12 +58,12 @@ public class Converters {
     }
 
     @TypeConverter
-    public static Date longToDate(long longDate) {
-        return (longDate < 0) ? null : new Date(longDate);
+    public static LocalDate stringToDate(String dateString) {
+        return (dateString.isEmpty()) ? null : LocalDate.parse(dateString);
     }
 
     @TypeConverter
-    public static Long dateToFloat(Date date) {
-        return date == null ? null : date.getTime();
+    public static String localDateToString(LocalDate date) {
+        return date == null ? null : date.toString();
     }
 }

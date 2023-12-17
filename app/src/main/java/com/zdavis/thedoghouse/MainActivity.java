@@ -6,6 +6,7 @@ import androidx.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.zdavis.thedoghouse.databinding.ActivityMainBinding;
+import com.zdavis.thedoghouse.databinding.ActivityPetBinding;
 import com.zdavis.thedoghouse.db.AppDatabase;
 import com.zdavis.thedoghouse.db.UserDAO;
 
@@ -36,32 +38,33 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
+
+    String loginStatus = "Please log in!";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         mMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
-        View view = mMainBinding.getRoot();
-
-        setContentView(view);
+        setContentView(mMainBinding.getRoot());
         mLoginUsernameEdittext = mMainBinding.loginUsernameEdittext;
         mLoginPasswordEdittext = mMainBinding.loginPasswordEdittext;
         mLoginStatusTextView = mMainBinding.loginStatusTextview;
         mLoginLoginButton = mMainBinding.loginLoginButton;
         mLoginCreateAccountButton = mMainBinding.loginCreateAccountButton;
 
-        mLoginStatusTextView.setText("");
-
         mUserDAO = AppDatabase.getInstance(this).getUserDao();
 
         sharedPref = getSharedPreferences(DOG_HOUSE_SHAREDPREF_FILE, 0);
         editor = sharedPref.edit();
 
+        mLoginStatusTextView.setText(loginStatus);
+
         mLoginLoginButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
+                Log.i("Available Users", mUserDAO.getUsers().toString());
                 String username = mLoginUsernameEdittext.getText().toString();
                 String password = mLoginPasswordEdittext.getText().toString();
 
@@ -76,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     Log.i("LOGIN STATUS", mLoginStatusTextView.getText().toString());
-                    updateDisplay(false);
-                    Log.i("LOGIN STATUS", mLoginStatusTextView.getText().toString());
+                    loginStatus = "Login Failed!";
+                    updateStatus();
                 }
 
             }
@@ -98,15 +101,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
     }
-    private void updateDisplay(Boolean loginSuccess) {
-        if (loginSuccess) {
-            mLoginStatusTextView.setText("Login Successful!");
-//            mLoginStatusTextView.setTextColor(1);
-        } else {
-            mLoginStatusTextView.setText("Login Failed!");
-//            mLoginStatusTextView.setTextColor(11);
-        }
 
+    private void updateStatus() {
+        if (loginStatus.equals("Login Failed!")) {
+            mLoginStatusTextView.setTextColor(Color.RED);
+        }
+        mLoginStatusTextView.setText(loginStatus);
     }
 
     public static Intent getIntent(Context context) {

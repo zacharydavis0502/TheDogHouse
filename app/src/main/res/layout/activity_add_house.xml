@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminMenuActivity">
+    tools:context=".AddHouseActivity">
 
     <TextView
-        android:id="@+id/admin_appName_textview"
+        android:id="@+id/add_home_AppName_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16sp"
@@ -22,68 +22,72 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/admin_title_textview"
+        android:id="@+id/add_home_title_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16sp"
         android:fontFamily="serif"
-        android:text="@string/adminPage"
+        android:text="@string/addHome"
         android:textAllCaps="false"
-        android:textSize="30sp"
+        android:textSize="50sp"
+        android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/admin_appName_textview"/>
+        app:layout_constraintTop_toBottomOf="@id/add_home_AppName_textview" />
+
+    <EditText
+        android:id="@+id/add_home_name_edittext"
+        android:layout_width="250sp"
+        android:layout_height="75sp"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:hint="Home Name"
+        android:inputType="text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_home_title_textview"/>
+
+    <Button
+        android:id="@+id/add_home_button"
+        android:layout_width="250sp"
+        android:layout_height="75sp"
+        android:layout_marginTop="16sp"
+        android:backgroundTint="@color/buttonColor"
+        android:text="@string/addHome"
+        android:textColor="@color/textColor"
+        android:textColorHighlight="#F7F5F5"
+        android:textColorLink="#F7F5F5"
+        android:textSize="28sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/add_home_name_edittext" />
 
     <TextView
-        android:id="@+id/admin_welcome_textview"
+        android:id="@+id/add_home_status_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16sp"
+        android:fontFamily="serif"
+        android:text="TESTING"
         android:gravity="center"
-        android:hint="Welcome ___!"
-        android:inputType="text"
-        android:textSize="20sp"
+        android:textColor="@color/black"
+        android:textColorHighlight="@color/white"
+        android:textColorLink="@color/white"
+        android:textAllCaps="false"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/admin_title_textview"/>
-    <Button
-        android:id="@+id/admin_allusers_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30sp"
-        android:backgroundTint="@color/buttonColor"
-        android:gravity="center"
-        android:text="@string/adminAllUsers"
-        android:textColor="@color/textColor"
-        android:textColorHighlight="#F7F5F5"
-        android:textColorLink="#F7F5F5"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@id/admin_allhomes_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/add_home_button" />
 
     <Button
-        android:id="@+id/admin_allhomes_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30sp"
-        android:backgroundTint="@color/buttonColor"
-        android:gravity="center"
-        android:text="@string/adminAllHomes"
-        android:textColor="@color/textColor"
-        android:textColorHighlight="#F7F5F5"
-        android:textColorLink="#F7F5F5"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@id/admin_back_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/admin_back_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30sp"
+        android:id="@+id/home_back_button"
+        android:layout_width="200sp"
+        android:layout_height="75sp"
+        android:layout_marginBottom="5sp"
         android:backgroundTint="@color/buttonColor"
         android:gravity="center"
         android:text="@string/back"
@@ -93,6 +97,6 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

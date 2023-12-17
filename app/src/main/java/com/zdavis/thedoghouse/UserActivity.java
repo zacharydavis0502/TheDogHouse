@@ -8,12 +8,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.zdavis.thedoghouse.databinding.ActivityUserBinding;
 import com.zdavis.thedoghouse.db.AppDatabase;
+import com.zdavis.thedoghouse.db.HouseDAO;
 import com.zdavis.thedoghouse.db.UserDAO;
 
 import java.util.List;
@@ -23,6 +27,10 @@ public class UserActivity extends AppCompatActivity {
 
     TextView mAppNameTextView;
     TextView mUserWelcomeTextView;
+
+    ScrollView mUserHomeScrollView;
+
+    LinearLayout mUserHomeLinearLayout;
     Button mUserCreateHomeButton;
     Button mUserAddHomeButton;
     Button mUserLogoutButton;
@@ -32,6 +40,7 @@ public class UserActivity extends AppCompatActivity {
     ActivityUserBinding mUserBinding;
 
     UserDAO mUserDAO;
+    HouseDAO mHouseDAO;
 
     int userId;
 
@@ -54,15 +63,15 @@ public class UserActivity extends AppCompatActivity {
 
         mAppNameTextView = mUserBinding.userAppNameTextview;
         mUserWelcomeTextView = mUserBinding.userWelcomeTextview;
+        mUserHomeScrollView = mUserBinding.userHomesScrollview;
+        mUserHomeLinearLayout = mUserBinding.userHomesLinearlayout;
         mUserCreateHomeButton = mUserBinding.userCreateHomeButton;
         mUserAddHomeButton = mUserBinding.userAddHomeButton;
         mUserLogoutButton = mUserBinding.userLogoutButton;
         mUserAdminMenuButton = mUserBinding.userAdminMenuButton;
 
-        mUserDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getUserDao();
+        mUserDAO = AppDatabase.getInstance(this).getUserDao();
+        mHouseDAO = AppDatabase.getInstance(this).getHouseDao();
 
         sharedPref = getSharedPreferences(MainActivity.DOG_HOUSE_SHAREDPREF_FILE, 0);
         editor = sharedPref.edit();
@@ -93,6 +102,33 @@ public class UserActivity extends AppCompatActivity {
             mUserAdminMenuButton.setClickable(false);
         }
 
+        for (int houseId : user.getHomes()) {
+            List<House> foundHouse = mHouseDAO.getHouseById(houseId);
+            if (foundHouse.size() >= 0) {
+                House house = foundHouse.get(0);
+                Button tempUserButton = new Button(this);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT);
+                lp.gravity = Gravity.CENTER_HORIZONTAL;
+                tempUserButton.setText(house.getName());
+                tempUserButton.setId(house.getHouseId());
+                tempUserButton.setLayoutParams(lp);
+
+                tempUserButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.i("INFO", house.toString());
+                        Intent houseIntent = HomeActivity.getIntent(getApplicationContext(), userId, house.getHouseId(), false);
+                        startActivity(houseIntent);
+                    }
+                });
+                //add button to the layout
+                mUserHomeLinearLayout.addView(tempUserButton);
+            } else {
+                Log.e("No Such House", "No such house with Id " + houseId);
+            }
+
+        }
+
         mUserLogoutButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -111,6 +147,21 @@ public class UserActivity extends AppCompatActivity {
             }
         });
 
+        mUserCreateHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = CreateHouseActivity.getIntent(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
+
+        mUserAddHomeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = AddHouseActivity.getIntent(getApplicationContext(), userId);
+                startActivity(intent);
+            }
+        });
 
     }
 

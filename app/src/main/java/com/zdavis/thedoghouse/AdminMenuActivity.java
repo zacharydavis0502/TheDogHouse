@@ -5,6 +5,7 @@ import androidx.room.Room;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,12 +23,19 @@ public class AdminMenuActivity extends AppCompatActivity {
     private static final String DOG_HOUSE_ADMIN = "com.zdavis.thedoghouse.DOG_HOUSE_ADMIN";
     TextView mAppNameTextView;
     TextView mAdminWelcomeTextView;
+
+    Button mAdminAllUsersButton;
+
+    Button mAdminAllHomesButton;
     Button mAdminBackButton;
     ActivityAdminMenuBinding mAdminMenuBinding;
     UserDAO mUserDAO;
     int userId;
     User adminUser;
     Intent logoutIntent;
+
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +49,21 @@ public class AdminMenuActivity extends AppCompatActivity {
 
         mAppNameTextView = mAdminMenuBinding.adminAppNameTextview;
         mAdminWelcomeTextView = mAdminMenuBinding.adminWelcomeTextview;
+        mAdminAllUsersButton = mAdminMenuBinding.adminAllusersButton;
+        mAdminAllHomesButton = mAdminMenuBinding.adminAllhomesButton;
         mAdminBackButton = mAdminMenuBinding.adminBackButton;
 
-        mUserDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DB_NAME)
-                .allowMainThreadQueries()
-                .build()
-                .getUserDao();
+        sharedPref = getSharedPreferences(MainActivity.DOG_HOUSE_SHAREDPREF_FILE, 0);
+        editor = sharedPref.edit();
+
+        mUserDAO = AppDatabase.getInstance(this).getUserDao();
 
         userId = getIntent().getIntExtra(DOG_HOUSE_ADMIN, -1);
 
         if (userId < 0) {
             Log.i("ERROR", "User activity wasnt passed a user id");
+            editor.remove(MainActivity.DOG_HOUSE_USER_PREFERENCE);
+            editor.apply();
             startActivity(logoutIntent);
         } else {
             List<User> users = mUserDAO.getUsersById(userId);
@@ -68,6 +80,22 @@ public class AdminMenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = UserActivity.getIntent(getApplicationContext(), adminUser.getUserId());
+                startActivity(intent);
+            }
+        });
+
+        mAdminAllUsersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = AdminUsersActivity.getIntent(getApplicationContext(), adminUser.getUserId());
+                startActivity(intent);
+            }
+        });
+
+        mAdminAllHomesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = AdminHomesActivity.getIntent(getApplicationContext(), adminUser.getUserId());
                 startActivity(intent);
             }
         });

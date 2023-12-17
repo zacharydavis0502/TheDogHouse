@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".NewPetActivity">
 
     <TextView
-        android:id="@+id/login_appName_textview"
+        android:id="@+id/new_pet_AppName_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16sp"
@@ -21,78 +21,86 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/login_username_edittext"
-        android:layout_width="250sp"
-        android:layout_height="75sp"
-        android:layout_marginTop="20sp"
-        android:gravity="center"
-        android:hint="Username"
-        android:inputType="text"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_appName_textview"/>
-
-    <EditText
-        android:id="@+id/login_password_edittext"
-        android:layout_width="250sp"
-        android:layout_height="75sp"
-        android:layout_marginTop="20sp"
-        android:gravity="center"
-        android:hint="Password"
-        android:inputType="textPassword"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_username_edittext"/>
-
-    <Button
-        android:id="@+id/login_login_button"
-        android:layout_width="250sp"
-        android:layout_height="75sp"
-        android:layout_marginTop="16sp"
-        android:backgroundTint="@color/buttonColor"
-        android:text="@string/login_button_label"
-        android:textColor="@color/textColor"
-        android:textColorHighlight="#F7F5F5"
-        android:textColorLink="#F7F5F5"
-        android:textSize="32sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_password_edittext" />
-
     <TextView
-        android:id="@+id/login_status_textview"
+        android:id="@+id/new_pet_title_textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16sp"
         android:fontFamily="serif"
-        android:text="TESTING"
-        android:textColor="@color/black"
-        android:textColorHighlight="@color/white"
-        android:textColorLink="@color/white"
+        android:text="@string/newPet"
         android:textAllCaps="false"
         android:textSize="50sp"
         android:textStyle="bold"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/login_login_button" />
+        app:layout_constraintTop_toBottomOf="@id/new_pet_AppName_textview" />
+
+    <EditText
+        android:id="@+id/new_pet_name_edittext"
+        android:layout_width="250sp"
+        android:layout_height="75sp"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:hint="Pet Name"
+        android:inputType="text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_pet_title_textview"/>
+
+    <EditText
+        android:id="@+id/new_pet_type_edittext"
+        android:layout_width="250sp"
+        android:layout_height="75sp"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:hint="Pet Type"
+        android:inputType="text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_pet_name_edittext"/>
+
+    <EditText
+        android:id="@+id/new_pet_color_edittext"
+        android:layout_width="250sp"
+        android:layout_height="75sp"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:hint="Color"
+        android:inputType="text"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_pet_type_edittext"/>
+
+    <EditText
+        android:id="@+id/new_pet_birthdate_edittext"
+        android:layout_width="250sp"
+        android:layout_height="75sp"
+        android:layout_marginTop="20sp"
+        android:gravity="center"
+        android:hint="Birthdate"
+        android:inputType="date"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_pet_color_edittext"/>
 
     <Button
-        android:id="@+id/login_create_account_button"
-        android:layout_width="300sp"
+        android:id="@+id/new_pet_add_pet_button"
+        android:layout_width="250sp"
         android:layout_height="75sp"
-        android:layout_marginBottom="30sp"
+        android:layout_marginTop="16sp"
         android:backgroundTint="@color/buttonColor"
-        android:text="@string/create_account_button_label"
+        android:text="@string/addPet"
         android:textColor="@color/textColor"
         android:textColorHighlight="#F7F5F5"
         android:textColorLink="#F7F5F5"
-        android:textSize="32sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/new_pet_birthdate_edittext" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

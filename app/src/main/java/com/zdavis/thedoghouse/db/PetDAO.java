@@ -13,7 +13,10 @@ import java.util.List;
 @Dao
 public interface PetDAO {
     @Insert
-    void insert(Pet... pets);
+    long insert(Pet pets);
+
+    @Insert
+    long[] insert(Pet... pets);
     @Update
     void update(Pet... pets);
     @Delete
